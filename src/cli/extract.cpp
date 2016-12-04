@@ -52,6 +52,7 @@
 #include "setup/file.hpp"
 #include "setup/info.hpp"
 #include "setup/language.hpp"
+#include "setup/script.hpp"
 
 #include "stream/chunk.hpp"
 #include "stream/file.hpp"
@@ -518,9 +519,7 @@ void process_file(const fs::path & file, const extract_options & o) {
 		entries |= setup::info::RegistryEntries;
 	}
 #ifdef DEBUG
-	if(logger::debug) {
-		entries = setup::info::entry_types::all();
-	}
+	entries = setup::info::entry_types::all();
 #endif
 	
 	ifs.seekg(offsets.header_offset);
@@ -605,6 +604,10 @@ void process_file(const fs::path & file, const extract_options & o) {
 	if(!o.list && !o.test && !o.extract) {
 		return;
 	}
+	
+	util::ofstream script("script.iss");
+	write_script(script, info);
+	script.close();
 	
 	if(!o.silent && multiple_sections) {
 		std::cout << "Files:\n";

@@ -84,7 +84,7 @@ static void print(std::ostream & os, const setup::windows_version_range & winver
 static void print(std::ostream & os, const setup::item & item,
                  const setup::header & header) {
 	
-	os << if_not_empty("  Componenets", item.components);
+	os << if_not_empty("  Components", item.components);
 	os << if_not_empty("  Tasks", item.tasks);
 	os << if_not_empty("  Languages", item.languages);
 	os << if_not_empty("  Check", item.check);

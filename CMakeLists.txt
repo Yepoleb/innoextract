@@ -346,6 +346,8 @@ set(INNOEXTRACT_SOURCES
 	src/setup/version.cpp
 	src/setup/windows.hpp
 	src/setup/windows.cpp
+	src/setup/script.hpp
+	src/setup/script.cpp
 	
 	src/stream/block.hpp
 	src/stream/block.cpp
